@@ -1,5 +1,5 @@
-import { hex, sha256Digest } from "../../utils/crypto";
-import { getPref } from "../../utils/prefs";
+import { hex, sha256Digest } from "../../utils";
+import { getPref, getString } from "../../utils";
 import { TranslateService } from "./base";
 
 const translate: TranslateService["translate"] = async function (data) {
@@ -47,9 +47,14 @@ const translate: TranslateService["translate"] = async function (data) {
   }
 
   const res = xhr.response;
+
   if (parseInt(res.errorCode) !== 0) {
-    throw `Service error: ${res.errorCode}`;
+    const errorCode = res.errorCode.toString();
+    const errorKey = `service-youdaozhiyun-error-${errorCode}`;
+    const errorMessage = getString(errorKey as any);
+    throw `Service error: ${errorCode} - ${errorMessage}`;
   }
+
   data.result = res.translation.join("");
 };
 
