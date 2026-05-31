@@ -15,7 +15,9 @@
     "build": "tsc --noEmit && zotero-plugin build",
     "release": "zotero-plugin release",
     "lint": "prettier --write . && eslint . --fix",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "vitest",
+    "test:ui": "vitest --ui",
+    "test:coverage": "vitest --coverage",
     "update-deps": "npm update --save"
   },
   "repository": {
@@ -37,16 +39,22 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.39.1",
+    "@peculiar/webcrypto": "^1.7.1",
+    "@types/jsdom": "^28.0.3",
     "@types/node": "^22.16.5",
+    "@vitest/coverage-v8": "^4.1.7",
+    "@vitest/ui": "^4.1.7",
     "chokidar-cli": "^3.0.0",
     "concurrently": "^9.2.0",
     "cross-env": "^10.1.0",
     "eslint": "^9.39.1",
     "husky": "^9.1.7",
+    "jsdom": "^29.1.1",
     "lint-staged": "^16.2.7",
     "prettier": "^3.7.4",
     "typescript": "^5.9.3",
     "typescript-eslint": "^8.48.1",
+    "vitest": "^4.1.7",
     "zotero-plugin-scaffold": "^0.8.2",
     "zotero-types": "^4.1.0-beta.3"
   }
